@@ -4,12 +4,12 @@ SWO library example for Mbed OS.
 ## Requirements
 ### Hardware requirements
 The following boards are required:
-- *List SWO Example hardware requirements here*
+- Any Zest Core with SWO output on JTAG connector
 
 ### Software requirements
 SWO Example makes use of the following libraries (automatically imported
 by `mbed deploy` or `mbed import`):
-- *List SWO Example software requirements here*
+- [SWO library](https://gitlab.com/catie_6tron/swo)
 
 ## Usage
 To clone **and** deploy the project in one command, use `mbed import` and skip to the

@@ -15,6 +15,7 @@
  * limitations under the License.
  */
 #include "mbed.h"
+#include "swo.h"
 
 using namespace sixtron;
 
@@ -23,6 +24,7 @@ namespace {
 }
 
 static DigitalOut led1(LED1);
+static SWO swo;
 
 // main() runs in its own thread in the OS
 // (note the calls to ThisThread::sleep_for below for delays)
@@ -31,7 +33,7 @@ int main()
     while (true) {
         led1 = !led1;
         if (led1) {
-            printf("Alive!\n");
+            swo.printf("Alive!\n");
         }
         ThisThread::sleep_for(PERIOD_MS / 2);
     }
