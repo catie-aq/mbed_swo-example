@@ -9,20 +9,20 @@ The following boards are required:
 ### Software requirements
 SWO Example makes use of the following libraries (automatically imported
 by `mbed deploy` or `mbed import`):
-- [SWO library](https://gitlab.com/catie_6tron/swo)
+- [SWO library](https://github.com/catie-aq/mbed_swo)
 
 ## Usage
 To clone **and** deploy the project in one command, use `mbed import` and skip to the
 target and toolchain definition:
 ```shell
-mbed import https://gitlab.com/catie_6tron/swo-example.git swo-example
+mbed import https://github.com/catie-aq/mbed_swo-example.git swo-example
 ```
 
 Alternatively:
 
 - Clone to "swo-example" and enter it:
   ```shell
-  git clone https://gitlab.com/catie_6tron/swo-example.git swo-example
+  git clone https://github.com/catie-aq/mbed_swo-example.git swo-example
   cd swo-example
   ```
 
