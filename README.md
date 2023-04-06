@@ -4,7 +4,7 @@ SWO library example for Mbed OS.
 ## Requirements
 ### Hardware requirements
 The following boards are required:
-- Any Zest Core with SWO output on JTAG connector
+- Any Zest_Core board with SWO output on JTAG connector
 
 ### Software requirements
 SWO Example makes use of the following libraries (automatically imported
@@ -31,49 +31,29 @@ Alternatively:
   mbed deploy
   ```
 
-- Set Mbed project root path:
+- Clone custom target repository if necessary:
   ```shell
-  mbed config root .
+  git clone YOUR_CUSTOM_TARGET_REPOSITORY your-custom-target
   ```
 
-Define your target (eg. `ZEST_CORE_STM32L4A6RG`) and toolchain:
+Define your target and toolchain:
 ```shell
-mbed target ZEST_CORE_STM32L4A6RG
+cp your-custom-target/custom_targets.json . # In case of custom target
+mbed target YOUR_MBED_OS_TARGET
 mbed toolchain GCC_ARM
 ```
 
-Export to Eclipse IDE with:
-```shell
-mbed export -i eclipse_6tron
-```
-
-## Working from command line
 Compile the project:
 ```shell
 mbed compile
 ```
 
-Program the target device (eg. `STM32L4A6RG` for the Zest_Core_STM32L4A6RG) with a J-Link
-debug probe:
+Program the target device with a Segger J-Link debug probe and
+[`sixtron_flash`](https://github.com/catie-aq/6tron_flash) tool:
 ```shell
-python dist/program.py STM32L4A6RG BUILD/ZEST_CORE_STM32L4A6RG/GCC_ARM/swo-example.elf
+sixtron_flash YOUR_JLINK_DEVICE BUILD/YOUR_MBED_OS_TARGET/GCC_ARM/mbed_swo-example.elf
 ```
 
-Debug on the target device (eg. `STM32L4A6RG` for the Zest_Core_STM32L4A6RG) with a
-J-Link debug probe.
-
-- First, start the GDB server:
-  ```shell
-  JLinkGDBServer -device STM32L4A6RG
-  ```
-
-- Then, in another terminal, start the debugger:
-  ```shell
-  arm-none-eabi-gdb BUILD/ZEST_CORE_STM32L4A6RG/GCC_ARM/swo-example.elf
-  ```
-
-*Note:* You may have to adjust your [GDB auto-loading safe path](https://sourceware.org/gdb/onlinedocs/gdb/Auto_002dloading-safe-path.html#Auto_002dloading-safe-path)
-or disable it completely by adding a .gdbinit file in your $HOME folder containing:
-```conf
-set autoload safe-path /
-```
+Debug on the target device with the probe and Segger
+[Ozone](https://www.segger.com/products/development-tools/ozone-j-link-debugger)
+software.
